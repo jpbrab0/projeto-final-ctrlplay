@@ -1,0 +1,16 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header form{
+    display: flex;
+    flex-direction: row;
+}
+header form input + input{
+    margin-left: 13px;
+}
+header form button {
+    background-color: #1ac7ff;
+    margin-left: 13px;
+}
