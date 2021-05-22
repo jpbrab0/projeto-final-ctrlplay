@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+html {
+    font-family: Roboto;
+}
 header {
     display: flex;
     align-items: center;
@@ -13,4 +17,10 @@ header form input + input{
 header form button {
     background-color: #1ac7ff;
     margin-left: 13px;
+    border: none;
+    border-radius: 8%;
+    color: #fff;
+    padding: 13px 23px;
+    font-size: 16px;
+
 }
