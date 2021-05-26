@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+html {
+    font-family: Roboto;
+}
+/* PARTE DO HEADER/LOGIN */
+header {
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 13px;
+    justify-content: space-around;
+}
+header h2{
+    font-weight: normal;
+}
+header form{
+    display: flex;
+    flex-direction: row;
+}
+header form input{
+    border-radius: 8px;
+    padding: 13px;
+}
+header form input + input{
+    margin-left: 13px;
+}
+header form button {
+    background-color: #1ac7ff;
+    margin-left: 13px;
+    border: none;
+    border-radius: 8%;
+    color: #fff;
+    padding: 13px 23px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* PARTE DO CADASTRO */
+section.register__container .total-line{
+    display: flex;
+    flex-direction: column;
+    padding: 13px;
+}
+section.register__container form div + div{
+    margin-left: 13px;
+}
+section.register__container form label{
+    margin-bottom: 8px;
+}
+section.register__container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+section.register__container form{
+    border-radius: 8px;
+    border: 1px solid #d0d0d0;
+    padding: 13px;
+}
+section.register__container .about__container h1{
+    font-weight: normal;
+    margin-bottom: 13px;
+    margin-top: 23px;
+}
+section.register__container .about__container img{
+    width: 80%;
+}
+section.register__container form input{
+    border: 1px solid #d0d0d0;
+    border-radius: 3px;
+    padding: 3px;
+    outline: none;
+}
+section.register__container form select {
+    padding: 3px 13px;
+    cursor: pointer;
+}
+section.register__container form .first-section{
+    display: flex;
+    padding: 13px;
+}
+section.register__container form .first-section div{
+    display: flex;
+    flex-direction: column;
+}
+section.register__container form .secound-section{
+    display: flex;
+    padding: 13px;
+}
+section.register__container form .secound-section div{
+    display: flex;
+    flex-direction: column;
+}
+section.register__container form .last-section{
+    display: flex;
+    padding: 13px;
+}
+section.register__container form .last-section div{
+    display: flex;
+    flex-direction: column;
+}
+section.register__container form button{
+    background-color: #7154c1;
+    color: white;
+    width: 100%;
+    padding: 16px;
+    margin-top: 13px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+section.register__container form button:hover{
+    opacity: 80%;
+}
