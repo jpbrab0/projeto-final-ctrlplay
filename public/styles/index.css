@@ -89,11 +89,20 @@ section.register__container form .first-section div{
     display: flex;
     flex-direction: column;
 }
+
 section.register__container form .secound-section{
     display: flex;
     padding: 13px;
 }
 section.register__container form .secound-section div{
+    display: flex;
+    flex-direction: column;
+}
+section.register__container form .third-section{
+    display: flex;
+    padding: 13px;
+}
+section.register__container form .third-section div{
     display: flex;
     flex-direction: column;
 }
