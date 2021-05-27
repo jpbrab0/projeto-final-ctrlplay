@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+header .current-user{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+header .current-user img {
+    border-radius: 50%;
+    width: 25%;
+    margin-right: 13px;
+}
+header .current-user div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+header .current-user div div{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+header .current-user div div a{
+    padding-left: 6px;
+}
+header .current-user h2{
+    font-weight: 500;
+    font-family: Roboto;
+}
+section.mid-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+section.mid-container .create-post{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+section.mid-container .create-post label{
+    font-family: Roboto;
+}
+section.mid-container .create-post textarea{
+    resize: none;
+    padding: 18px 0;
+    margin: 13px 0;
+}
+section.mid-container .create-post button {
+    background-color: #7154c1;
+    color: #fff;
+    border: none;
+    padding: 13px;
+    border-radius: 6px;
+    font-family: Roboto;
+    cursor: pointer;
+}
