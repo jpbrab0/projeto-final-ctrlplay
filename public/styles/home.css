@@ -10,8 +10,10 @@ header .current-user{
     align-items: center;
 }
 header .current-user img {
-    border-radius: 50%;
+    border-radius: 100%;
     width: 25%;
+    max-width: 200px;
+    padding: 8px;
     margin-right: 13px;
 }
 header .current-user div{
@@ -60,4 +62,50 @@ section.mid-container .create-post button {
     border-radius: 6px;
     font-family: Roboto;
     cursor: pointer;
+}
+.all-posts{
+    margin-top: 23px;
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.all-posts hr{
+    width: 40%;
+}
+.all-posts h1{
+    font-family: Roboto;
+    font-weight: 500;
+}
+.all-posts .post{
+    margin: 16px auto;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+.all-posts .post b{
+    color: green;
+}
+.all-posts .post nav{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.all-posts .post nav img{
+    border-radius: 50%;
+    width: 20%;
+}
+.all-posts .post nav h3{
+    margin-left: 13px;
+    font-family: Roboto;
+    font-weight: 500;
+}
+.all-posts .post p{
+    font-family: Roboto;
+    font-weight: 500;
+    width: 100%;
+    font-size: 1.2rem;
+    max-width: 100%;
+    word-wrap: break-word;
 }
