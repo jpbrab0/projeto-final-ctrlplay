@@ -27,31 +27,31 @@
             <section class="first-section">
                 <div>
                     <label for="email">Email</label>
-                    <input name="email" id="email">
+                    <input name="email" id="email" required type="email">
                 </div>
                 <div>
                     <label for="name">Name</label>
-                    <input name="name" id="name">
+                    <input name="name" id="name" required>
                 </div>
             </section>
             <section class="secound-section">
                 <div>
                     <label for="avatar_url">Avatar_url</label>
-                    <input name="avatar_url" id="avatar_url">
+                    <input name="avatar_url" id="avatar_url" type="url" required>
                 </div>
                 <div>
                     <label for="username">Username</label>
-                    <input name="username" id="username">
+                    <input name="username" id="username" required>
                 </div>
             </section>
             <section class="third-section">
                 <div>
                     <label for="biograph">Biograph</label>
-                    <input name="biograph" id="biograph">
+                    <input name="biograph" id="biograph" required>
                 </div>
                 <div>
                     <label for="gender">Gender</label>
-                    <select name="gender" id="gender">
+                    <select name="gender" id="gender" required>
                         <option value="Select a gender" disabled>Select a gender</option>
                         <option value="Man" selected>Man</option>
                         <option value="Women">Women</option>
@@ -62,11 +62,11 @@
             <section class="last-section">
                 <div>
                     <label for="password">Senha</label>
-                    <input name="password" id="password">
+                    <input name="password" id="password" type="password" required>
                 </div>
                 <div>
                     <label for="password_confirmation">Confirme sua senha</label>
-                    <input name="password_confirmation" id="password_confirmation">
+                    <input name="password_confirmation" id="password_confirmation" type="password" required>
                 </div>
             </section>
             <button type="submit">Register</button>
@@ -92,16 +92,30 @@
     }
     if(!empty($_GET['logged'])){
         if($_GET['logged'] == 'false'){
-            // Gambiarra caso o usuário não esteje logado, envia um alerta.
+            // Gambiarra caso o usuário não esteja logado, envia um alerta.
             echo "<script>alert('Para acessar a home, por favor logue na sua conta.')</script>";
             echo "<script>location.href='./index.php'</script>";
         }
     }
-if(!empty($_GET['password_incorrect'])){
-    if($_GET['password_incorrect'] == 'true'){
-        // Gambiarra caso o usuário não esteje logado, envia um alerta.
-        echo "<script>alert('As senhas utilizadas no cadastro não coincidem.')</script>";
-        echo "<script>location.href='./index.php'</script>";
+    if(!empty($_GET['password_incorrect'])){
+        if($_GET['password_incorrect'] == 'true'){
+            // Gambiarra caso o usuário não esteja logado, envia um alerta.
+            echo "<script>alert('As senhas utilizadas no cadastro não coincidem.')</script>";
+            echo "<script>location.href='./index.php'</script>";
+        }
     }
-}
+    if(!empty($_GET['register_error'])){
+        if($_GET['register_error'] == 'true'){
+            // Gambiarra caso o usuário não esteja logado, envia um alerta.
+            echo "<script>alert('Alguns dados que você colocou para cadastro já foram utilizados, por favor tente novamente.')</script>";
+            echo "<script>location.href='./index.php'</script>";
+        }
+    }
+    if(!empty($_GET['user_updated'])){
+        if($_GET['user_updated'] == 'true'){
+            // Gambiarra caso o usuário não esteja logado, envia um alerta.
+            echo "<script>alert('O seu usuário foi atualizado com sucesso, por favor logue em sua conta novamente.')</script>";
+            echo "<script>location.href='./index.php'</script>";
+        }
+    }
 ?>

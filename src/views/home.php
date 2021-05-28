@@ -1,9 +1,18 @@
 <?php
 session_start();
 require_once "../models/database_connection.php";
-// Verificando caso a pessoa não esteje logada na rede social.
+
+$_SESSION['liked_posts'] = [];
+
+// Verificando caso a pessoa não esteja logada na rede social.
 if (empty($_SESSION['email'])) {
     echo "<script>location.href='./index.php?logged=false'</script>";
+}
+if(!empty($_GET["error"])){
+    if($_GET["error"] = "null_post"){
+        echo "<script>alert('Por favor preencha o campo de texto para publicar o seu post.')</script>";
+        echo "<script>location.href='../views/home.php'</script>";
+    }
 }
 ?>
 <!doctype html>
@@ -37,12 +46,13 @@ if (empty($_SESSION['email'])) {
                     }
                     ?></h2>
                 <div>
-                    <a>Editar perfil</a>
+                    <a href="update_profile.php">Editar perfil</a>
                     <a href="../controllers/disconnect.php">Sair.</a>
                 </div>
             </div>
         </section>
     </header>
+
     <section class="mid-container">
         <form class="create-post" method="POST" action="../controllers/create_post.php">
             <label for="post_text">Criar um post</label>
@@ -53,20 +63,46 @@ if (empty($_SESSION['email'])) {
                 echo $row->id;
             }
             ?>">
-            <input type="hidden" name="total_likes" value="0">
             <textarea name="post_text" id="post_text" placeholder="O que está acontecendo?"></textarea>
             <button type="submit">Postar</button>
         </form>
         <section class="all-posts">
             <?php
             $posts = getAllPosts();
+
+            $avatarUrlOfUser = "";
+            $result = getDataOfUser($_SESSION['email']);
+
+            while($row2 = $result->fetch(PDO::FETCH_OBJ)){
+                $avatarUrlOfUser = $row2->avatar_url;
+            }
+            function getNameOfAuthor($id){
+                $rs = getDataOfUserWithId($id);
+                while($row = $rs->fetch(PDO::FETCH_OBJ)){
+                    return $row->username;
+                }
+            }
             if(count($posts) > 0){
                 for($i = 0; $i < count($posts); $i++) {
-                    echo $posts[$i]['post_text']. "<br>";
-                    echo "Likes: ".$posts[$i]['total_likes'];
+                    $postID = $posts[$i]['postID'];
+                    echo "<div class='post'>";
+                        echo "<nav>";
+                            echo "<img ". "src='".$avatarUrlOfUser."'".">";
+                            echo "<h3>"."Escrito por ". "<a href='". getNameOfAuthor($posts[$i]['userID']) ."'>" .getNameOfAuthor($posts[$i]['userID']). "</a>" . "</h3>";
+                        echo "</nav>";
+
+                        echo "<p>" . $posts[$i]['post_text']."</p>";
+
+                        if($_SESSION['id'] == $posts[$i]['userID']){
+                            echo "<a href=../controllers/delete_post.php?id=".$postID.">Apagar post</a>";
+                        }
+                    echo "</div>";
                 }
             }
             ?>
+            <hr>
+            <br>
+            <hr>
         </section>
     </section>
 </body>
