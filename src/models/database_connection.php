@@ -32,10 +32,9 @@ function createUser($name, $email, $avatar_url, $username, $password, $biograph,
 function createPost($userID, $post_text, $total_likes) {
     global $connection;
 
-    $query = $connection->prepare("INSERT INTO posts(userID,post_text,total_likes) VALUES (?,?,?)");
+    $query = $connection->prepare("INSERT INTO posts(userID,post_text) VALUES (?,?)");
     $query->bindParam(1, $userID);
     $query->bindParam(2, $post_text);
-    $query->bindParam(3, $total_likes);
 
     $query->execute();
 
@@ -50,6 +49,24 @@ function getDataOfUser($email) {
 
     return $query;
 }
+function getDataOfUserWithId($id){
+    global $connection;
+
+    $query = $connection->prepare("SELECT * FROM users WHERE id=:id");
+    $query->bindParam(':id', $id);
+    $query->execute();
+
+    return $query;
+}
+function getDataOfUserWithUsername($username){
+    global $connection;
+
+    $query = $connection->prepare("SELECT * FROM users WHERE username=:username");
+    $query->bindParam(':username', $username);
+    $query->execute();
+
+    return $query;
+}
 function getAllPosts(){
     global $connection;
 
@@ -57,4 +74,55 @@ function getAllPosts(){
     $results = $query->fetchAll(PDO::FETCH_ASSOC);
 
     return $results;
+}
+function getAllPostsOfUser($id){
+    global $connection;
+
+    $query = $connection->prepare("SELECT * FROM posts WHERE userID=:id");
+    $query->bindParam('id', $id);
+    $query->execute();
+
+    return $query;
+}
+function getAllPostsOfUserByUsername($query_username){
+    global $connection;
+
+    $resultDataOfUser = getDataOfUserWithUsername($query_username);
+    $userID = "";
+    while($rowUser = $resultDataOfUser->fetch(PDO::FETCH_OBJ)){
+        $userID = $rowUser->id;
+    }
+
+    $query = $connection->prepare("SELECT * FROM posts WHERE userID=:id");
+    $query->bindParam('id', $userID);
+    $query->execute();
+
+    return $query;
+}
+function updateUser($userId, $name, $email, $avatar_url, $username, $password, $biograph, $gender) {
+    global $connection;
+
+    $query = $connection->prepare("UPDATE users SET name=:name,email=:email,avatar_url=:avatar_url,username=:username,password=:password,biograph=:biograph,gender=:gender WHERE id=:id");
+
+    $query->bindParam(name, $name);
+    $query->bindParam(email, $email);
+    $query->bindParam(avatar_url, $avatar_url);
+    $query->bindParam(username, $username);
+    $query->bindParam(password, $password);
+    $query->bindParam(biograph, $biograph);
+    $query->bindParam(gender, $gender);
+    $query->bindParam(id, $userId);
+
+    $query->execute();
+
+    return true;
+}
+function deletePostById($post_id){
+    global $connection;
+
+    $query = $connection->prepare("DELETE FROM posts WHERE postID=:postID");
+    $query->bindParam(':postID', $post_id);
+    $query->execute();
+
+    return true;
 }
